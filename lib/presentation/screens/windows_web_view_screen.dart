@@ -58,7 +58,7 @@ _onTap(BuildContext context) async {
     ..setBrightness(Brightness.dark)
     ..launch(AppConstance.url)
     ..registerJavaScriptMessageHandler("myMessage", (name, body) {
-      print('GET IN');
+     
     });
 }
 

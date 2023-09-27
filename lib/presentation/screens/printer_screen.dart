@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_printer_sdk/core/utils/enums.dart';
 import 'package:screenshot/screenshot.dart';
 
 import '../../core/utils/general_functions/using_printer.dart';
@@ -7,9 +9,14 @@ import 'screen_shoots_screens/screen_shoot_invoice.dart';
 import 'screen_shoots_screens/screen_shoot_oder.dart';
 
 class PrinterScreen extends StatefulWidget {
-  const PrinterScreen({super.key, required this.dto, required this.isImin});
+  const PrinterScreen(
+      {super.key,
+      required this.dto,
+      required this.isImin,
+      required this.printingState});
   final DtoTest dto;
   final bool isImin;
+  final PrintingState printingState;
 
   @override
   State<PrinterScreen> createState() => _PrinterScreenState();
@@ -29,7 +36,8 @@ class _PrinterScreenState extends State<PrinterScreen> {
             .capture()
             .then((capturedImageOrder) async {
           UsingPrinter usingPrinter = UsingPrinter(
-              listImages: [capturedImageInvoice!, capturedImageOrder!],
+              listImages: listImage(widget.printingState, capturedImageInvoice,
+                  capturedImageOrder),
               dto: widget.dto);
           if (widget.isImin) {
             await usingPrinter.printingImin();
@@ -41,6 +49,18 @@ class _PrinterScreenState extends State<PrinterScreen> {
     });
 
     super.initState();
+  }
+
+  List<Uint8List>? listImage(PrintingState printingState,
+      Uint8List? capturedImageInvoice, Uint8List? capturedImageOrder) {
+    switch (printingState) {
+      case PrintingState.order:
+        return [capturedImageInvoice!, capturedImageOrder!];
+      case PrintingState.print:
+        return [capturedImageInvoice!];
+      case PrintingState.end:
+        return [capturedImageOrder!];
+    }
   }
 
   @override
@@ -55,13 +75,17 @@ class _PrinterScreenState extends State<PrinterScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ScrenShotInvoice(
-                      dto: widget.dto,
-                      isImin: widget.isImin,
-                      screenshotController: screenshotControllerInvoice),
-                  ScreenShootOrder(
-                      dto: widget.dto,
-                      screenshotController: screenshotControllerOrder)
+                  if (widget.printingState == PrintingState.end ||
+                      widget.printingState == PrintingState.print)
+                    ScrenShotInvoice(
+                        dto: widget.dto,
+                        isImin: widget.isImin,
+                        screenshotController: screenshotControllerInvoice),
+                  if (widget.printingState == PrintingState.end ||
+                      widget.printingState == PrintingState.order)
+                    ScreenShootOrder(
+                        dto: widget.dto,
+                        screenshotController: screenshotControllerOrder)
                 ],
               ),
             )),
