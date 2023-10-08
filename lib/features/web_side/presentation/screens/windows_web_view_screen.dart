@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
-import '../../core/utils/app_constance.dart';
+import '../../../../core/utils/app_constance.dart';
 
 class WindowsWebViewScreen extends StatefulWidget {
   const WindowsWebViewScreen({Key? key}) : super(key: key);
@@ -57,9 +57,7 @@ _onTap(BuildContext context) async {
   webview
     ..setBrightness(Brightness.dark)
     ..launch(AppConstance.url)
-    ..registerJavaScriptMessageHandler("myMessage", (name, body) {
-     
-    });
+    ..registerJavaScriptMessageHandler("myMessage", (name, body) {});
 }
 
 Future<String> _getWebViewPath() async {

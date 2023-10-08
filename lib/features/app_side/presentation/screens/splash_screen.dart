@@ -4,11 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_printer_sdk/core/services/services_locator.dart';
 import 'package:flutter_printer_sdk/core/usecase/base_use_case.dart';
 import 'package:flutter_printer_sdk/features/app_side/presentation/controller/app_side_bloc.dart';
-import 'package:flutter_printer_sdk/presentation/screens/app_web_view_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_printer_sdk/features/web_side/presentation/screens/app_web_view_screen.dart';
+import '../../../../core/utils/app_constance.dart';
 import '../../../../core/utils/assets_manager.dart';
 import '../../../../core/utils/general_widgets/general_widget_anaimation_opacity.dart';
-import 'login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -41,27 +40,12 @@ class _SplashScreenState extends State<SplashScreen> {
                   seconds: 2,
                   onEnd: () async {
                     await Future.delayed(const Duration(seconds: 3), () async {
-                      await SystemChrome.setEnabledSystemUIMode(
-                          SystemUiMode.manual,
-                          overlays: SystemUiOverlay.values);
-                      if (mounted) {
-                        if (state.isLoginBefore) {
-                          final SharedPreferences prefs =
-                              await SharedPreferences.getInstance();
-                          await Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => AppWebViewScreen(
-                                    url: prefs.getString('url')!),
-                              ));
-                        } else {
-                          await Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const LoginScreen(),
-                              ));
-                        }
-                      }
+                      await Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const AppWebViewScreen(url: AppConstance.url),
+                          ));
                     });
                   });
             },
@@ -72,23 +56,34 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-/*
-
-GeneralWidgetAnimationOpacity(
-            widgetOpacity: const Image(
-                image: AssetImage(ImgAssets.easaccLogo), height: 90),
-            seconds: 2,
-            onEnd: () async {
-              await Future.delayed(const Duration(seconds: 3), () async {
-                await SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-                    overlays: SystemUiOverlay.values);
-                if (mounted) {
-                  await Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const LoginScreen(),
-                      ));
-                }
-              });
-            })
-*/
+// {
+//               return GeneralWidgetAnimationOpacity(
+//                   widgetOpacity: const Image(
+//                       image: AssetImage(ImgAssets.easaccLogo), height: 90),
+//                   seconds: 2,
+//                   onEnd: () async {
+//                     await Future.delayed(const Duration(seconds: 3), () async {
+//                       await SystemChrome.setEnabledSystemUIMode(
+//                           SystemUiMode.manual,
+//                           overlays: SystemUiOverlay.values);
+//                       if (mounted) {
+//                         if (state.isLoginBefore) {
+//                           final SharedPreferences prefs =
+//                               await SharedPreferences.getInstance();
+//                           await Navigator.pushReplacement(
+//                               context,
+//                               MaterialPageRoute(
+//                                 builder: (context) => AppWebViewScreen(
+//                                     url: prefs.getString('url')!),
+//                               ));
+//                         } else {
+//                           await Navigator.pushReplacement(
+//                               context,
+//                               MaterialPageRoute(
+//                                 builder: (context) => const LoginScreen(),
+//                               ));
+//                         }
+//                       }
+//                     });
+//                   });
+//             },

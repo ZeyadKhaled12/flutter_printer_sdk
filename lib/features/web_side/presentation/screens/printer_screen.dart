@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_printer_sdk/core/utils/enums.dart';
 import 'package:screenshot/screenshot.dart';
 
-import '../../core/utils/general_functions/using_printer.dart';
+import '../../../../core/utils/general_functions/using_printer.dart';
 import '../../data/models/dto_test/dto_test.dart';
 import 'screen_shoots_screens/screen_shoot_invoice.dart';
 import 'screen_shoots_screens/screen_shoot_oder.dart';
@@ -37,8 +37,7 @@ class _PrinterScreenState extends State<PrinterScreen> {
             .then((capturedImageOrder) async {
           UsingPrinter usingPrinter = UsingPrinter(
               listImages: listImage(widget.printingState, capturedImageInvoice,
-                  capturedImageOrder),
-              dto: widget.dto);
+                  capturedImageOrder));
           if (widget.isImin) {
             await usingPrinter.printingImin();
           } else {

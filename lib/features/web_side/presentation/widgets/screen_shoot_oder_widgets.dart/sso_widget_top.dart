@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/utils/general_functions/converter.dart';
+import '../../../../../core/utils/general_functions/converter.dart';
 import '../../../data/models/dto_test/dto_test.dart';
 
 class SSOWidgetTop extends StatelessWidget {

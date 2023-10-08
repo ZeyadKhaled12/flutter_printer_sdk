@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_printer_sdk/core/utils/general_widgets/general_widget_alert_error.dart';
-import 'package:flutter_printer_sdk/presentation/screens/app_web_view_screen.dart';
+import 'package:flutter_printer_sdk/features/web_side/presentation/screens/app_web_view_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../core/services/services_locator.dart';

@@ -3,8 +3,8 @@ import 'package:flutter_printer_sdk/features/app_side/presentation/screens/login
 import 'package:flutter_printer_sdk/features/app_side/presentation/screens/splash_screen.dart';
 
 import 'core/services/services_locator.dart';
-import 'presentation/screens/app_web_view_screen.dart';
-import 'presentation/screens/windows_web_view_screen.dart';
+import 'features/web_side/presentation/screens/app_web_view_screen.dart';
+import 'features/web_side/presentation/screens/windows_web_view_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

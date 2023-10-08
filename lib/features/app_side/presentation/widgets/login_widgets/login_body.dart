@@ -8,7 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../../config/colors.dart';
 import '../../../../../core/utils/app_constance.dart';
 import '../../../../../core/utils/assets_manager.dart';
-import '../../../../../presentation/screens/app_web_view_screen.dart';
+import '../../../../web_side/presentation/screens/app_web_view_screen.dart';
 import 'login_widegt_text_field.dart';
 
 class LoginBody extends StatefulWidget {
