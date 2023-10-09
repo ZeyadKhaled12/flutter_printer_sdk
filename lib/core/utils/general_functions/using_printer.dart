@@ -3,8 +3,7 @@ import 'package:esc_pos_printer/esc_pos_printer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_printer_sdk/core/utils/enums.dart';
-import '../../../features/web_side/data/models/dto_offline.dart/dto_online.dart';
-import 'printer_invoice.dart';
+import 'printer_esc_pos.dart';
 
 class UsingPrinter {
   final Uint8List? image;
@@ -22,8 +21,8 @@ class UsingPrinter {
     final PosPrintResult res = await printer.connect(ipAddress, port: port);
 
     if (res == PosPrintResult.success) {
-      PrinterInvoice()
-          .getPrinter(printer: printer, images: listImages, imgae: image);
+      PrinterEscPos()
+          .getPrinter(printer: printer, images: listImages, image: image);
       printer.disconnect();
     }
   }

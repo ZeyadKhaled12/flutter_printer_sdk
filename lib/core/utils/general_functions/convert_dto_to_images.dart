@@ -1,7 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/services.dart';
-import 'package:pdf/pdf.dart' as pw;
-
 import '../../../features/web_side/data/models/dto_offline.dart/dto_online.dart';
 import '../../../features/web_side/data/models/print_object.dart';
 import 'convert_brand_to_state.dart';
@@ -17,7 +14,7 @@ class ConvertDtoToImages {
       printObjects.add(PrintObject(
           printingBrandState:
               ConvertBrandToState(brand: dtoOnline.brand!).getBrandState(),
-          uint8list: convertBase64ToImage(dtoOnline.data!),
+          base64String: dtoOnline.data!,
           ipAddress: dtoOnline.ipAddress!,
           port: int.parse(dtoOnline.port!)));
     }
@@ -26,16 +23,11 @@ class ConvertDtoToImages {
         printObjects.add(PrintObject(
             printingBrandState:
                 ConvertBrandToState(brand: element.brand!).getBrandState(),
-            uint8list: convertBase64ToImage(element.data!),
+            base64String: element.data!,
             ipAddress: dtoOnline.ipAddress!,
             port: int.parse(dtoOnline.port!)));
       });
     }
     return printObjects;
-  }
-
-  Uint8List convertBase64ToImage(String base64String) {
-    Uint8List uint8list = base64Decode(base64String);
-    return base64Decode(base64String);
   }
 }
