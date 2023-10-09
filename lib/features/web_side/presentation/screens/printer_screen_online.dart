@@ -4,45 +4,25 @@ import 'dart:typed_data';
 import 'package:flutter_printer_sdk/features/web_side/data/models/print_object.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_pdfview/flutter_pdfview.dart';
-import 'package:screenshot/screenshot.dart';
-
-import '../../../../core/utils/general_functions/using_printer.dart';
 
 class PrinterScreenOnline extends StatefulWidget {
-  const PrinterScreenOnline({super.key, required this.printObjects});
-  final List<PrintObject> printObjects;
+  const PrinterScreenOnline({super.key, required this.uint8list});
+  final Uint8List uint8list;
 
   @override
   State<PrinterScreenOnline> createState() => _PrinterScreenOnlineState();
 }
 
 class _PrinterScreenOnlineState extends State<PrinterScreenOnline> {
-  Widget pdfView = const Text('');
-  ScreenshotController screenshotController = ScreenshotController();
-
-  @override
-  void initState() {
-    for (var element in widget.printObjects) {
-      Future.delayed(const Duration(milliseconds: 200), () async {
-        pdfView = await convertBase64ToPDF(element.base64String);
-        setState(() {});
-      }).then((value) async {
-        await screenshotController.capture().then((capturedImage) async {
-          await UsingPrinter(
-                  image: capturedImage,
-                  printingBrandState: element.printingBrandState)
-              .call(ipAddress: element.ipAddress, port: element.port);
-        });
-      });
-    }
-    Navigator.pop(context);
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Screenshot(child: pdfView, controller: screenshotController);
+    return Scaffold(
+      body: Center(
+        child: Image(
+          image: MemoryImage(widget.uint8list),
+        ),
+      ),
+    );
   }
 }
 
@@ -51,9 +31,7 @@ Future<Widget> convertBase64ToPDF(String base64String) async {
   final path = directory!.path;
   final file = File('$path/my_pdf.pdf');
   await file.writeAsBytes(base64.decode(base64String), flush: true);
-  return PDFView(
-    filePath: file.path,
-  );
+  return Text('');
 }
 
 Future<Image> convertFileToImage(File picture) async {

@@ -8,7 +8,7 @@ class PrinterEscPos extends BasePrinterPdf {
   @override
   void getPrinter(
       {required NetworkPrinter printer,
-      List<int>? image,
+      Uint8List? image,
       List<Uint8List>? images}) async {
     if (images != null) {
       final Image? image1 = decodeImage(images[0]);
