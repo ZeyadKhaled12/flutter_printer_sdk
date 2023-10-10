@@ -1,4 +1,4 @@
-import 'package:collection/collection.dart';
+import 'package:equatable/equatable.dart';
 
 import 'bill_detail.dart';
 import 'bill_place.dart';
@@ -10,96 +10,96 @@ import 'receipt_setting.dart';
 import 'user.dart';
 import 'user_finish.dart';
 
-class DtoTest {
-  int? id;
-  int? indexId;
-  dynamic offlineOrderNo;
-  dynamic failureReason;
-  String? code;
-  int? orderNo;
-  String? tableNo;
-  dynamic tableCatNameAr;
-  dynamic tableCatNameEn;
-  String? dateOpen;
-  String? date;
-  String? deliveredTime;
-  int? totalQty;
-  int? supTotal;
-  int? totalVat;
-  String? discountValue;
-  int? discountTotal;
-  int? totalAfterDiscount;
-  String? applicationValue;
-  int? applicationTotal;
-  String? serviceValue;
-  int? serviceTotal;
-  int? deliveryFee;
-  int? netTotal;
-  int? paiedCash;
-  int? paiedVisa;
-  dynamic lastPaiedCash;
-  dynamic lastPaiedVisa;
-  int? remaining;
-  String? notes;
-  String? reference;
-  bool? isSave;
-  bool? isPending;
-  bool? isPrint;
-  bool? isRemoveService;
-  dynamic removeServiceId;
-  bool? isQrMenu;
-  bool? isDelete;
-  bool? vatIsActive;
-  dynamic causeDeletion;
-  bool? vatIsTaxesIncluded;
-  int? vatValue;
-  List<BillDetail>? billDetails;
-  List<dynamic>? billTaxes;
-  int? billPlaceId;
-  BillPlace? billPlace;
-  dynamic applicationId;
-  dynamic application;
-  dynamic tableId;
-  dynamic table;
-  int? billTypeId;
-  dynamic billType;
-  dynamic lastPaymentTypeId;
-  dynamic lastPaymentType;
-  int? paymentTypeId;
-  PaymentType? paymentType;
-  int? branchId;
-  Branch? branch;
-  dynamic stockId;
-  dynamic lastStockId;
-  dynamic stock;
-  dynamic lastBoxMoneyCategoriesId;
-  String? boxMoneyCategoriesId;
-  int? userId;
-  User? user;
-  int? userFinishId;
-  UserFinish? userFinish;
-  int? shiftDetailsId;
-  int? boxMoneyId;
-  String? uid;
-  dynamic printerName;
-  int? countCopies;
-  dynamic receiptType;
-  String? lang;
-  String? logo;
-  dynamic qrCode;
-  CompanyInfo? companyInfo;
-  dynamic clientId;
-  dynamic employeeId;
-  dynamic employeeName;
-  dynamic address;
-  Client? client;
-  List<ReceiptSetting>? receiptSettings;
-  bool? isPrintSupervisor;
-  String? printSupervisor;
-  dynamic abkhusTransactionNo;
-  dynamic abkhusErrorMsg;
+class DtoOffline extends Equatable {
+  final int? id;
+  final int? indexId;
+  final dynamic offlineOrderNo;
+  final dynamic failureReason;
+  final String? code;
+  final int? orderNo;
+  final String? tableNo;
+  final dynamic tableCatNameAr;
+  final dynamic tableCatNameEn;
+  final String? dateOpen;
+  final String? date;
+  final String? deliveredTime;
+  final int? totalQty;
+  final int? supTotal;
+  final int? totalVat;
+  final String? discountValue;
+  final int? discountTotal;
+  final int? totalAfterDiscount;
+  final String? applicationValue;
+  final int? applicationTotal;
+  final String? serviceValue;
+  final int? serviceTotal;
+  final int? deliveryFee;
+  final int? netTotal;
+  final int? paiedCash;
+  final int? paiedVisa;
+  final dynamic lastPaiedCash;
+  final dynamic lastPaiedVisa;
+  final int? remaining;
+  final String? notes;
+  final String? reference;
+  final bool? isSave;
+  final bool? isPending;
+  final bool? isPrint;
+  final bool? isRemoveService;
+  final dynamic removeServiceId;
+  final bool? isQrMenu;
+  final bool? isDelete;
+  final bool? vatIsActive;
+  final dynamic causeDeletion;
+  final bool? vatIsTaxesIncluded;
+  final int? vatValue;
+  final List<BillDetail>? billDetails;
+  final List<dynamic>? billTaxes;
+  final int? billPlaceId;
+  final BillPlace? billPlace;
+  final dynamic applicationId;
+  final dynamic application;
+  final dynamic tableId;
+  final dynamic table;
+  final int? billTypeId;
+  final dynamic billType;
+  final dynamic lastPaymentTypeId;
+  final dynamic lastPaymentType;
+  final int? paymentTypeId;
+  final PaymentType? paymentType;
+  final int? branchId;
+  final Branch? branch;
+  final dynamic stockId;
+  final dynamic lastStockId;
+  final dynamic stock;
+  final dynamic lastBoxMoneyCategoriesId;
+  final String? boxMoneyCategoriesId;
+  final int? userId;
+  final User? user;
+  final int? userFinishId;
+  final UserFinish? userFinish;
+  final int? shiftDetailsId;
+  final int? boxMoneyId;
+  final String? uid;
+  final dynamic printerName;
+  final dynamic countCopies;
+  final dynamic receiptType;
+  final String? lang;
+  final String? logo;
+  final dynamic qrCode;
+  final CompanyInfo? companyInfo;
+  final dynamic clientId;
+  final dynamic employeeId;
+  final dynamic employeeName;
+  final dynamic address;
+  final Client? client;
+  final List<ReceiptSetting>? receiptSettings;
+  final bool? isPrintSupervisor;
+  final String? printSupervisor;
+  final dynamic abkhusTransactionNo;
+  final dynamic abkhusErrorMsg;
 
-  DtoTest({
+  const DtoOffline({
     this.id,
     this.indexId,
     this.offlineOrderNo,
@@ -189,7 +189,7 @@ class DtoTest {
     this.abkhusErrorMsg,
   });
 
-  factory DtoTest.fromJson(Map<String, dynamic> json) => DtoTest(
+  factory DtoOffline.fromJson(Map<String, dynamic> json) => DtoOffline(
         id: json['id'] as int?,
         indexId: json['indexId'] as int?,
         offlineOrderNo: json['offlineOrderNo'] as dynamic,
@@ -273,7 +273,7 @@ class DtoTest {
         boxMoneyId: json['boxMoneyId'] as int?,
         uid: json['uid'] as String?,
         printerName: json['printerName'] as dynamic,
-        countCopies: json['countCopies'] as int?,
+        countCopies: json['countCopies'] as dynamic,
         receiptType: json['receiptType'] as dynamic,
         lang: json['lang'] as String?,
         logo: json['logo'] as String?,
@@ -388,100 +388,95 @@ class DtoTest {
       };
 
   @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    if (other is! DtoTest) return false;
-    final mapEquals = const DeepCollectionEquality().equals;
-    return mapEquals(other.toJson(), toJson());
+  List<Object?> get props {
+    return [
+      id,
+      indexId,
+      offlineOrderNo,
+      failureReason,
+      code,
+      orderNo,
+      tableNo,
+      tableCatNameAr,
+      tableCatNameEn,
+      dateOpen,
+      date,
+      deliveredTime,
+      totalQty,
+      supTotal,
+      totalVat,
+      discountValue,
+      discountTotal,
+      totalAfterDiscount,
+      applicationValue,
+      applicationTotal,
+      serviceValue,
+      serviceTotal,
+      deliveryFee,
+      netTotal,
+      paiedCash,
+      paiedVisa,
+      lastPaiedCash,
+      lastPaiedVisa,
+      remaining,
+      notes,
+      reference,
+      isSave,
+      isPending,
+      isPrint,
+      isRemoveService,
+      removeServiceId,
+      isQrMenu,
+      isDelete,
+      vatIsActive,
+      causeDeletion,
+      vatIsTaxesIncluded,
+      vatValue,
+      billDetails,
+      billTaxes,
+      billPlaceId,
+      billPlace,
+      applicationId,
+      application,
+      tableId,
+      table,
+      billTypeId,
+      billType,
+      lastPaymentTypeId,
+      lastPaymentType,
+      paymentTypeId,
+      paymentType,
+      branchId,
+      branch,
+      stockId,
+      lastStockId,
+      stock,
+      lastBoxMoneyCategoriesId,
+      boxMoneyCategoriesId,
+      userId,
+      user,
+      userFinishId,
+      userFinish,
+      shiftDetailsId,
+      boxMoneyId,
+      uid,
+      printerName,
+      countCopies,
+      receiptType,
+      lang,
+      logo,
+      qrCode,
+      companyInfo,
+      clientId,
+      employeeId,
+      employeeName,
+      address,
+      client,
+      receiptSettings,
+      isPrintSupervisor,
+      printSupervisor,
+      abkhusTransactionNo,
+      abkhusErrorMsg,
+    ];
   }
-
-  @override
-  int get hashCode =>
-      id.hashCode ^
-      indexId.hashCode ^
-      offlineOrderNo.hashCode ^
-      failureReason.hashCode ^
-      code.hashCode ^
-      orderNo.hashCode ^
-      tableNo.hashCode ^
-      tableCatNameAr.hashCode ^
-      tableCatNameEn.hashCode ^
-      dateOpen.hashCode ^
-      date.hashCode ^
-      deliveredTime.hashCode ^
-      totalQty.hashCode ^
-      supTotal.hashCode ^
-      totalVat.hashCode ^
-      discountValue.hashCode ^
-      discountTotal.hashCode ^
-      totalAfterDiscount.hashCode ^
-      applicationValue.hashCode ^
-      applicationTotal.hashCode ^
-      serviceValue.hashCode ^
-      serviceTotal.hashCode ^
-      deliveryFee.hashCode ^
-      netTotal.hashCode ^
-      paiedCash.hashCode ^
-      paiedVisa.hashCode ^
-      lastPaiedCash.hashCode ^
-      lastPaiedVisa.hashCode ^
-      remaining.hashCode ^
-      notes.hashCode ^
-      reference.hashCode ^
-      isSave.hashCode ^
-      isPending.hashCode ^
-      isPrint.hashCode ^
-      isRemoveService.hashCode ^
-      removeServiceId.hashCode ^
-      isQrMenu.hashCode ^
-      isDelete.hashCode ^
-      vatIsActive.hashCode ^
-      causeDeletion.hashCode ^
-      vatIsTaxesIncluded.hashCode ^
-      vatValue.hashCode ^
-      billDetails.hashCode ^
-      billTaxes.hashCode ^
-      billPlaceId.hashCode ^
-      billPlace.hashCode ^
-      applicationId.hashCode ^
-      application.hashCode ^
-      tableId.hashCode ^
-      table.hashCode ^
-      billTypeId.hashCode ^
-      billType.hashCode ^
-      lastPaymentTypeId.hashCode ^
-      lastPaymentType.hashCode ^
-      paymentTypeId.hashCode ^
-      paymentType.hashCode ^
-      branchId.hashCode ^
-      branch.hashCode ^
-      stockId.hashCode ^
-      lastStockId.hashCode ^
-      stock.hashCode ^
-      lastBoxMoneyCategoriesId.hashCode ^
-      boxMoneyCategoriesId.hashCode ^
-      userId.hashCode ^
-      user.hashCode ^
-      userFinishId.hashCode ^
-      userFinish.hashCode ^
-      shiftDetailsId.hashCode ^
-      boxMoneyId.hashCode ^
-      uid.hashCode ^
-      printerName.hashCode ^
-      countCopies.hashCode ^
-      receiptType.hashCode ^
-      lang.hashCode ^
-      logo.hashCode ^
-      qrCode.hashCode ^
-      companyInfo.hashCode ^
-      clientId.hashCode ^
-      employeeId.hashCode ^
-      employeeName.hashCode ^
-      address.hashCode ^
-      client.hashCode ^
-      receiptSettings.hashCode ^
-      isPrintSupervisor.hashCode ^
-      printSupervisor.hashCode ^
-      abkhusTransactionNo.hashCode ^
-      abkhusErrorMsg.hashCode;
 }

@@ -1,23 +1,22 @@
-import 'package:collection/collection.dart';
+import 'package:equatable/equatable.dart';
 
 import 'branch.dart';
-import 'printer.dart';
 
-class User {
-  int? id;
-  String? fullName;
-  String? username;
-  String? email;
-  String? currentDateOpen;
-  bool? isDelete;
-  bool? isOpenShift;
-  int? branchId;
-  Branch? branch;
-  int? printerId;
-  Printer? printer;
-  int? boxMoneyId;
+class UserFinish extends Equatable {
+  final int? id;
+  final String? fullName;
+  final String? username;
+  final String? email;
+  final String? currentDateOpen;
+  final bool? isDelete;
+  final bool? isOpenShift;
+  final int? branchId;
+  final Branch? branch;
+  final dynamic printerId;
+  final dynamic printer;
+  final int? boxMoneyId;
 
-  User({
+  const UserFinish({
     this.id,
     this.fullName,
     this.username,
@@ -32,7 +31,7 @@ class User {
     this.boxMoneyId,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
+  factory UserFinish.fromJson(Map<String, dynamic> json) => UserFinish(
         id: json['id'] as int?,
         fullName: json['fullName'] as String?,
         username: json['username'] as String?,
@@ -44,10 +43,8 @@ class User {
         branch: json['branch'] == null
             ? null
             : Branch.fromJson(json['branch'] as Map<String, dynamic>),
-        printerId: json['printerId'] as int?,
-        printer: json['printer'] == null
-            ? null
-            : Printer.fromJson(json['printer'] as Map<String, dynamic>),
+        printerId: json['printerId'] as dynamic,
+        printer: json['printer'] as dynamic,
         boxMoneyId: json['boxMoneyId'] as int?,
       );
 
@@ -62,30 +59,25 @@ class User {
         'branchId': branchId,
         'branch': branch?.toJson(),
         'printerId': printerId,
-        'printer': printer?.toJson(),
+        'printer': printer,
         'boxMoneyId': boxMoneyId,
       };
 
   @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    if (other is! User) return false;
-    final mapEquals = const DeepCollectionEquality().equals;
-    return mapEquals(other.toJson(), toJson());
+  List<Object?> get props {
+    return [
+      id,
+      fullName,
+      username,
+      email,
+      currentDateOpen,
+      isDelete,
+      isOpenShift,
+      branchId,
+      branch,
+      printerId,
+      printer,
+      boxMoneyId,
+    ];
   }
-
-  @override
-  int get hashCode =>
-      id.hashCode ^
-      fullName.hashCode ^
-      username.hashCode ^
-      email.hashCode ^
-      currentDateOpen.hashCode ^
-      isDelete.hashCode ^
-      isOpenShift.hashCode ^
-      branchId.hashCode ^
-      branch.hashCode ^
-      printerId.hashCode ^
-      printer.hashCode ^
-      boxMoneyId.hashCode;
 }

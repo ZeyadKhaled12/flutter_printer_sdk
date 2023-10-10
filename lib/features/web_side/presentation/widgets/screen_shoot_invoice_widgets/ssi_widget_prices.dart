@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../data/models/dto_test/dto_test.dart';
+import '../../../data/models/dto_offline/dto_offline.dart';
+
 
 class SSIWidgetPrices extends StatelessWidget {
   const SSIWidgetPrices({super.key, required this.dto, required this.isImin});
-  final DtoTest dto;
+  final DtoOffline dto;
   final bool isImin;
 
   @override

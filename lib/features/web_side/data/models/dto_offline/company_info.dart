@@ -1,16 +1,16 @@
-import 'package:collection/collection.dart';
+import 'package:equatable/equatable.dart';
 
-class CompanyInfo {
-  int? id;
-  String? nameAr;
-  String? nameEn;
-  String? phone;
-  String? address;
-  String? taxNumber;
-  String? note;
-  String? logo;
+class CompanyInfo extends Equatable {
+  final int? id;
+  final String? nameAr;
+  final String? nameEn;
+  final String? phone;
+  final String? address;
+  final String? taxNumber;
+  final String? note;
+  final String? logo;
 
-  CompanyInfo({
+  const CompanyInfo({
     this.id,
     this.nameAr,
     this.nameEn,
@@ -44,21 +44,16 @@ class CompanyInfo {
       };
 
   @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    if (other is! CompanyInfo) return false;
-    final mapEquals = const DeepCollectionEquality().equals;
-    return mapEquals(other.toJson(), toJson());
+  List<Object?> get props {
+    return [
+      id,
+      nameAr,
+      nameEn,
+      phone,
+      address,
+      taxNumber,
+      note,
+      logo,
+    ];
   }
-
-  @override
-  int get hashCode =>
-      id.hashCode ^
-      nameAr.hashCode ^
-      nameEn.hashCode ^
-      phone.hashCode ^
-      address.hashCode ^
-      taxNumber.hashCode ^
-      note.hashCode ^
-      logo.hashCode;
 }

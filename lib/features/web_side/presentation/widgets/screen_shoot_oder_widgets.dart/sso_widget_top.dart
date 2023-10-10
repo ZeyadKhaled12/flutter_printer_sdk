@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_printer_sdk/features/web_side/data/models/dto_offline/dto_offline.dart';
 
 import '../../../../../core/utils/general_functions/converter.dart';
-import '../../../data/models/dto_test/dto_test.dart';
 
 class SSOWidgetTop extends StatelessWidget {
   const SSOWidgetTop({super.key, required this.dto});
-  final DtoTest dto;
+  final DtoOffline dto;
 
   @override
   Widget build(BuildContext context) {

@@ -1,47 +1,46 @@
-import 'package:collection/collection.dart';
+import 'package:equatable/equatable.dart';
 
 import 'item.dart';
 import 'item_unit.dart';
 
-class BillDetail {
-  int? id;
-  String? dateOpen;
-  String? date;
-  int? itemSellPrice;
-  int? itemBuyPrice;
-  int? qty;
-  int? numberPieces;
-  int? supTotal;
-  String? vatValue;
-  int? vatTotal;
-  String? discountValue;
-  int? discountTotal;
-  String? note;
-  int? notePrice;
-  int? netTotal;
-  int? currentQtyAfterMovement;
-  int? avgAfterMovment;
-  int? totalCostAfterMovement;
-  bool? isNew;
-  bool? isDelete;
-  bool? isFinish;
-  int? billId;
-  int? itemId;
-  int? internalQty;
-  dynamic itemUnitNameAr;
-  dynamic itemUnitNameEn;
-  int? itemUnitId;
-  dynamic causeDeletion;
-  int? userId;
-  String? username;
-  String? parentCategoryAr;
-  String? parentCategoryEn;
-  ItemUnit? itemUnit;
-  dynamic bill;
-  Item? item;
-  dynamic cookStatusId;
+class BillDetail extends Equatable {
+  final int? id;
+  final String? dateOpen;
+  final String? date;
+  final int? itemSellPrice;
+  final int? itemBuyPrice;
+  final int? qty;
+  final int? numberPieces;
+  final int? supTotal;
+  final String? vatValue;
+  final int? vatTotal;
+  final String? discountValue;
+  final int? discountTotal;
+  final String? note;
+  final int? notePrice;
+  final int? netTotal;
+  final int? currentQtyAfterMovement;
+  final int? avgAfterMovment;
+  final int? totalCostAfterMovement;
+  final bool? isNew;
+  final bool? isDelete;
+  final bool? isFinish;
+  final int? billId;
+  final int? itemId;
+  final int? internalQty;
+  final dynamic itemUnitNameAr;
+  final dynamic itemUnitNameEn;
+  final int? itemUnitId;
+  final dynamic causeDeletion;
+  final int? userId;
+  final String? username;
+  final String? parentCategoryAr;
+  final String? parentCategoryEn;
+  final ItemUnit? itemUnit;
+  final Item? item;
+  final dynamic cookStatusId;
 
-  BillDetail({
+  const BillDetail({
     this.id,
     this.dateOpen,
     this.date,
@@ -75,7 +74,6 @@ class BillDetail {
     this.parentCategoryAr,
     this.parentCategoryEn,
     this.itemUnit,
-    this.bill,
     this.item,
     this.cookStatusId,
   });
@@ -116,7 +114,6 @@ class BillDetail {
         itemUnit: json['itemUnit'] == null
             ? null
             : ItemUnit.fromJson(json['itemUnit'] as Map<String, dynamic>),
-        bill: json['bill'] as dynamic,
         item: json['item'] == null
             ? null
             : Item.fromJson(json['item'] as Map<String, dynamic>),
@@ -157,55 +154,48 @@ class BillDetail {
         'parentCategoryAR': parentCategoryAr,
         'parentCategoryEN': parentCategoryEn,
         'itemUnit': itemUnit?.toJson(),
-        'bill': bill,
         'item': item?.toJson(),
         'cookStatusId': cookStatusId,
       };
 
   @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    if (other is! BillDetail) return false;
-    final mapEquals = const DeepCollectionEquality().equals;
-    return mapEquals(other.toJson(), toJson());
+  List<Object?> get props {
+    return [
+      id,
+      dateOpen,
+      date,
+      itemSellPrice,
+      itemBuyPrice,
+      qty,
+      numberPieces,
+      supTotal,
+      vatValue,
+      vatTotal,
+      discountValue,
+      discountTotal,
+      note,
+      notePrice,
+      netTotal,
+      currentQtyAfterMovement,
+      avgAfterMovment,
+      totalCostAfterMovement,
+      isNew,
+      isDelete,
+      isFinish,
+      billId,
+      itemId,
+      internalQty,
+      itemUnitNameAr,
+      itemUnitNameEn,
+      itemUnitId,
+      causeDeletion,
+      userId,
+      username,
+      parentCategoryAr,
+      parentCategoryEn,
+      itemUnit,
+      item,
+      cookStatusId,
+    ];
   }
-
-  @override
-  int get hashCode =>
-      id.hashCode ^
-      dateOpen.hashCode ^
-      date.hashCode ^
-      itemSellPrice.hashCode ^
-      itemBuyPrice.hashCode ^
-      qty.hashCode ^
-      numberPieces.hashCode ^
-      supTotal.hashCode ^
-      vatValue.hashCode ^
-      vatTotal.hashCode ^
-      discountValue.hashCode ^
-      discountTotal.hashCode ^
-      note.hashCode ^
-      notePrice.hashCode ^
-      netTotal.hashCode ^
-      currentQtyAfterMovement.hashCode ^
-      avgAfterMovment.hashCode ^
-      totalCostAfterMovement.hashCode ^
-      isNew.hashCode ^
-      isDelete.hashCode ^
-      isFinish.hashCode ^
-      billId.hashCode ^
-      itemId.hashCode ^
-      internalQty.hashCode ^
-      itemUnitNameAr.hashCode ^
-      itemUnitNameEn.hashCode ^
-      itemUnitId.hashCode ^
-      causeDeletion.hashCode ^
-      userId.hashCode ^
-      username.hashCode ^
-      parentCategoryAr.hashCode ^
-      parentCategoryEn.hashCode ^
-      itemUnit.hashCode ^
-      bill.hashCode ^
-      item.hashCode ^
-      cookStatusId.hashCode;
 }

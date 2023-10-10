@@ -1,19 +1,19 @@
-import 'package:collection/collection.dart';
+import 'package:equatable/equatable.dart';
 
-class ItemCategory {
-  int? id;
-  String? nameAr;
-  String? nameEn;
-  bool? isSell;
-  bool? isManufacturing;
-  bool? isBuy;
-  dynamic parentId;
-  int? printerId;
-  String? image;
-  bool? isDelete;
-  int? itemCategoriesCount;
+class ItemCategory extends Equatable {
+  final int? id;
+  final String? nameAr;
+  final String? nameEn;
+  final bool? isSell;
+  final bool? isManufacturing;
+  final bool? isBuy;
+  final dynamic parentId;
+  final int? printerId;
+  final String? image;
+  final bool? isDelete;
+  final int? itemCategoriesCount;
 
-  ItemCategory({
+  const ItemCategory({
     this.id,
     this.nameAr,
     this.nameEn,
@@ -56,24 +56,19 @@ class ItemCategory {
       };
 
   @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    if (other is! ItemCategory) return false;
-    final mapEquals = const DeepCollectionEquality().equals;
-    return mapEquals(other.toJson(), toJson());
+  List<Object?> get props {
+    return [
+      id,
+      nameAr,
+      nameEn,
+      isSell,
+      isManufacturing,
+      isBuy,
+      parentId,
+      printerId,
+      image,
+      isDelete,
+      itemCategoriesCount,
+    ];
   }
-
-  @override
-  int get hashCode =>
-      id.hashCode ^
-      nameAr.hashCode ^
-      nameEn.hashCode ^
-      isSell.hashCode ^
-      isManufacturing.hashCode ^
-      isBuy.hashCode ^
-      parentId.hashCode ^
-      printerId.hashCode ^
-      image.hashCode ^
-      isDelete.hashCode ^
-      itemCategoriesCount.hashCode;
 }

@@ -1,16 +1,16 @@
-import 'package:collection/collection.dart';
+import 'package:equatable/equatable.dart';
 
-class Client {
-  int? id;
-  int? clientTypeId;
-  dynamic clientTypeName;
-  dynamic name;
-  dynamic phone;
-  dynamic address;
-  int? deliveryFee;
-  bool? isDelete;
+class Client extends Equatable {
+  final int? id;
+  final int? clientTypeId;
+  final dynamic clientTypeName;
+  final dynamic name;
+  final dynamic phone;
+  final dynamic address;
+  final int? deliveryFee;
+  final bool? isDelete;
 
-  Client({
+  const Client({
     this.id,
     this.clientTypeId,
     this.clientTypeName,
@@ -44,21 +44,16 @@ class Client {
       };
 
   @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    if (other is! Client) return false;
-    final mapEquals = const DeepCollectionEquality().equals;
-    return mapEquals(other.toJson(), toJson());
+  List<Object?> get props {
+    return [
+      id,
+      clientTypeId,
+      clientTypeName,
+      name,
+      phone,
+      address,
+      deliveryFee,
+      isDelete,
+    ];
   }
-
-  @override
-  int get hashCode =>
-      id.hashCode ^
-      clientTypeId.hashCode ^
-      clientTypeName.hashCode ^
-      name.hashCode ^
-      phone.hashCode ^
-      address.hashCode ^
-      deliveryFee.hashCode ^
-      isDelete.hashCode;
 }

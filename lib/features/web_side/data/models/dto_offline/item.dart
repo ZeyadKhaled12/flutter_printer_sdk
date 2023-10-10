@@ -1,31 +1,34 @@
-import 'package:collection/collection.dart';
+import 'package:equatable/equatable.dart';
 
 import 'item_category.dart';
 import 'item_unit_price.dart';
+import 'printer.dart';
 
-class Item {
-  int? id;
-  String? code;
-  String? nameAr;
-  String? nameEn;
-  String? imagePath;
-  dynamic itemTypeId;
-  int? itemIndex;
-  String? note;
-  int? itemCategoryId;
-  ItemCategory? itemCategory;
-  int? itemUnitPriceDefault;
-  dynamic printerName;
-  int? averagePrice;
-  bool? isDelete;
-  bool? isSell;
-  bool? isHideFromMenu;
-  bool? isManufacturing;
-  bool? isBuy;
-  bool? isFree;
-  List<ItemUnitPrice>? itemUnitPrices;
+class Item extends Equatable {
+  final int? id;
+  final String? code;
+  final String? nameAr;
+  final String? nameEn;
+  final String? imagePath;
+  final dynamic itemTypeId;
+  final int? itemIndex;
+  final String? note;
+  final int? itemCategoryId;
+  final ItemCategory? itemCategory;
+  final int? itemUnitPriceDefault;
+  final dynamic printerName;
+  final int? averagePrice;
+  final bool? isDelete;
+  final bool? isSell;
+  final bool? isHideFromMenu;
+  final bool? isManufacturing;
+  final bool? isBuy;
+  final bool? isFree;
+  final dynamic printerId;
+  final Printer? printer;
+  final List<ItemUnitPrice>? itemUnitPrices;
 
-  Item({
+  const Item({
     this.id,
     this.code,
     this.nameAr,
@@ -45,6 +48,8 @@ class Item {
     this.isManufacturing,
     this.isBuy,
     this.isFree,
+    this.printerId,
+    this.printer,
     this.itemUnitPrices,
   });
 
@@ -71,6 +76,10 @@ class Item {
         isManufacturing: json['isManufacturing'] as bool?,
         isBuy: json['isBuy'] as bool?,
         isFree: json['isFree'] as bool?,
+        printerId: json['printerId'] as dynamic,
+        printer: json['printer'] == null
+            ? null
+            : Printer.fromJson(json['printer'] as Map<String, dynamic>),
         itemUnitPrices: (json['itemUnitPrices'] as List<dynamic>?)
             ?.map((e) => ItemUnitPrice.fromJson(e as Map<String, dynamic>))
             .toList(),
@@ -96,37 +105,36 @@ class Item {
         'isManufacturing': isManufacturing,
         'isBuy': isBuy,
         'isFree': isFree,
+        'printerId': printerId,
+        'printer': printer?.toJson(),
         'itemUnitPrices': itemUnitPrices?.map((e) => e.toJson()).toList(),
       };
 
   @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    if (other is! Item) return false;
-    final mapEquals = const DeepCollectionEquality().equals;
-    return mapEquals(other.toJson(), toJson());
+  List<Object?> get props {
+    return [
+      id,
+      code,
+      nameAr,
+      nameEn,
+      imagePath,
+      itemTypeId,
+      itemIndex,
+      note,
+      itemCategoryId,
+      itemCategory,
+      itemUnitPriceDefault,
+      printerName,
+      averagePrice,
+      isDelete,
+      isSell,
+      isHideFromMenu,
+      isManufacturing,
+      isBuy,
+      isFree,
+      printerId,
+      printer,
+      itemUnitPrices,
+    ];
   }
-
-  @override
-  int get hashCode =>
-      id.hashCode ^
-      code.hashCode ^
-      nameAr.hashCode ^
-      nameEn.hashCode ^
-      imagePath.hashCode ^
-      itemTypeId.hashCode ^
-      itemIndex.hashCode ^
-      note.hashCode ^
-      itemCategoryId.hashCode ^
-      itemCategory.hashCode ^
-      itemUnitPriceDefault.hashCode ^
-      printerName.hashCode ^
-      averagePrice.hashCode ^
-      isDelete.hashCode ^
-      isSell.hashCode ^
-      isHideFromMenu.hashCode ^
-      isManufacturing.hashCode ^
-      isBuy.hashCode ^
-      isFree.hashCode ^
-      itemUnitPrices.hashCode;
 }

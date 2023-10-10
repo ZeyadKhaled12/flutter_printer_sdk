@@ -11,6 +11,7 @@ class PrinterEscPos extends BasePrinterPdf {
       Uint8List? image,
       List<Uint8List>? images}) async {
     if (images != null) {
+      print('GET IN 1');
       final Image? image1 = decodeImage(images[0]);
       final Image? image2 = decodeImage(images[1]);
       printer.image(image1!, align: PosAlign.center);
@@ -20,9 +21,9 @@ class PrinterEscPos extends BasePrinterPdf {
       printer.feed(1);
     }
     if (image != null) {
+      print('GET IN 2');
       final Image? imageDecode = decodeImage(image);
       printer.image(imageDecode!, align: PosAlign.center);
-      printer.feed(1);
     }
     printer.cut();
   }

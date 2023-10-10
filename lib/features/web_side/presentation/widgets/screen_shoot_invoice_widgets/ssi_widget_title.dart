@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../data/models/dto_test/dto_test.dart';
+import '../../../data/models/dto_offline/dto_offline.dart';
 
 class SSIWidgetTitle extends StatelessWidget {
   const SSIWidgetTitle({super.key, required this.dto});
-  final DtoTest dto;
+  final DtoOffline dto;
 
   @override
   Widget build(BuildContext context) {

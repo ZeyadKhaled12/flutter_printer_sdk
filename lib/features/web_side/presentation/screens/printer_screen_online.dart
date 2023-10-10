@@ -17,9 +17,13 @@ class _PrinterScreenOnlineState extends State<PrinterScreenOnline> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Center(
-        child: Image(
-          image: MemoryImage(widget.uint8list),
+        child: Container(
+          color: Colors.white,
+          child: Image(
+            image: MemoryImage(widget.uint8list),
+          ),
         ),
       ),
     );

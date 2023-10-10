@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../core/utils/general_functions/converter.dart';
-import '../../../data/models/dto_test/dto_test.dart';
+import '../../../data/models/dto_offline/dto_offline.dart';
 
 class SSIWidgetCachier extends StatelessWidget {
   const SSIWidgetCachier({super.key, required this.dto});
-  final DtoTest dto;
+  final DtoOffline dto;
 
   @override
   Widget build(BuildContext context) {

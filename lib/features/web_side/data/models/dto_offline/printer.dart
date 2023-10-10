@@ -1,26 +1,24 @@
-import 'package:collection/collection.dart';
+import 'package:equatable/equatable.dart';
 
-import 'printer_connection_type.dart';
+class Printer extends Equatable {
+  final int? id;
+  final String? displayNameAr;
+  final String? displayNameEn;
+  final dynamic printerName;
+  final int? countCopies;
+  final bool? isDelete;
+  final dynamic printerConnectionTypeId;
+  final dynamic printerConnectionType;
+  final dynamic printerModelId;
+  final dynamic printerModel;
+  final dynamic printerBrandId;
+  final dynamic printerBrand;
+  final dynamic printPaperSizeId;
+  final dynamic printPaperSize;
+  final dynamic ipAddress;
+  final dynamic port;
 
-class Printer {
-  int? id;
-  String? displayNameAr;
-  String? displayNameEn;
-  dynamic printerName;
-  int? countCopies;
-  bool? isDelete;
-  int? printerConnectionTypeId;
-  PrinterConnectionType? printerConnectionType;
-  dynamic printerModelId;
-  dynamic printerModel;
-  dynamic printerBrandId;
-  dynamic printerBrand;
-  dynamic printPaperSizeId;
-  dynamic printPaperSize;
-  dynamic ipAddress;
-  dynamic port;
-
-  Printer({
+  const Printer({
     this.id,
     this.displayNameAr,
     this.displayNameEn,
@@ -46,11 +44,8 @@ class Printer {
         printerName: json['printerName'] as dynamic,
         countCopies: json['countCopies'] as int?,
         isDelete: json['isDelete'] as bool?,
-        printerConnectionTypeId: json['printerConnectionTypeId'] as int?,
-        printerConnectionType: json['printerConnectionType'] == null
-            ? null
-            : PrinterConnectionType.fromJson(
-                json['printerConnectionType'] as Map<String, dynamic>),
+        printerConnectionTypeId: json['printerConnectionTypeId'] as dynamic,
+        printerConnectionType: json['printerConnectionType'] as dynamic,
         printerModelId: json['printerModelId'] as dynamic,
         printerModel: json['printerModel'] as dynamic,
         printerBrandId: json['printerBrandId'] as dynamic,
@@ -69,7 +64,7 @@ class Printer {
         'countCopies': countCopies,
         'isDelete': isDelete,
         'printerConnectionTypeId': printerConnectionTypeId,
-        'printerConnectionType': printerConnectionType?.toJson(),
+        'printerConnectionType': printerConnectionType,
         'printerModelId': printerModelId,
         'printerModel': printerModel,
         'printerBrandId': printerBrandId,
@@ -81,29 +76,24 @@ class Printer {
       };
 
   @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    if (other is! Printer) return false;
-    final mapEquals = const DeepCollectionEquality().equals;
-    return mapEquals(other.toJson(), toJson());
+  List<Object?> get props {
+    return [
+      id,
+      displayNameAr,
+      displayNameEn,
+      printerName,
+      countCopies,
+      isDelete,
+      printerConnectionTypeId,
+      printerConnectionType,
+      printerModelId,
+      printerModel,
+      printerBrandId,
+      printerBrand,
+      printPaperSizeId,
+      printPaperSize,
+      ipAddress,
+      port,
+    ];
   }
-
-  @override
-  int get hashCode =>
-      id.hashCode ^
-      displayNameAr.hashCode ^
-      displayNameEn.hashCode ^
-      printerName.hashCode ^
-      countCopies.hashCode ^
-      isDelete.hashCode ^
-      printerConnectionTypeId.hashCode ^
-      printerConnectionType.hashCode ^
-      printerModelId.hashCode ^
-      printerModel.hashCode ^
-      printerBrandId.hashCode ^
-      printerBrand.hashCode ^
-      printPaperSizeId.hashCode ^
-      printPaperSize.hashCode ^
-      ipAddress.hashCode ^
-      port.hashCode;
 }

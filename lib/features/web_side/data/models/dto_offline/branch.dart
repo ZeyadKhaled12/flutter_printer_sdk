@@ -1,22 +1,23 @@
-import 'package:collection/collection.dart';
+import 'package:equatable/equatable.dart';
 
 import 'branch_type.dart';
 
-class Branch {
-  int? id;
-  String? nameAr;
-  String? nameEn;
-  dynamic workFrom;
-  dynamic workTo;
-  dynamic phone;
-  dynamic address;
-  bool? isDelete;
-  dynamic parentId;
-  dynamic parent;
-  int? branchTypeId;
-  BranchType? branchType;
+class Branch extends Equatable {
+  final int? id;
+  final String? nameAr;
+  final String? nameEn;
+  final dynamic workFrom;
+  final dynamic workTo;
+  final dynamic phone;
+  final dynamic address;
+  final bool? isDelete;
+  final dynamic parentId;
+  final dynamic parent;
+  final int? branchTypeId;
+  final BranchType? branchType;
+  final dynamic cityId;
 
-  Branch({
+  const Branch({
     this.id,
     this.nameAr,
     this.nameEn,
@@ -29,6 +30,7 @@ class Branch {
     this.parent,
     this.branchTypeId,
     this.branchType,
+    this.cityId,
   });
 
   factory Branch.fromJson(Map<String, dynamic> json) => Branch(
@@ -46,6 +48,7 @@ class Branch {
         branchType: json['branchType'] == null
             ? null
             : BranchType.fromJson(json['branchType'] as Map<String, dynamic>),
+        cityId: json['cityId'] as dynamic,
       );
 
   Map<String, dynamic> toJson() => {
@@ -61,28 +64,25 @@ class Branch {
         'parent': parent,
         'branchTypeId': branchTypeId,
         'branchType': branchType?.toJson(),
+        'cityId': cityId,
       };
 
   @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    if (other is! Branch) return false;
-    final mapEquals = const DeepCollectionEquality().equals;
-    return mapEquals(other.toJson(), toJson());
+  List<Object?> get props {
+    return [
+      id,
+      nameAr,
+      nameEn,
+      workFrom,
+      workTo,
+      phone,
+      address,
+      isDelete,
+      parentId,
+      parent,
+      branchTypeId,
+      branchType,
+      cityId,
+    ];
   }
-
-  @override
-  int get hashCode =>
-      id.hashCode ^
-      nameAr.hashCode ^
-      nameEn.hashCode ^
-      workFrom.hashCode ^
-      workTo.hashCode ^
-      phone.hashCode ^
-      address.hashCode ^
-      isDelete.hashCode ^
-      parentId.hashCode ^
-      parent.hashCode ^
-      branchTypeId.hashCode ^
-      branchType.hashCode;
 }

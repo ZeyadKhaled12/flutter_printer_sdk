@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_printer_sdk/features/web_side/data/models/dto_offline/dto_offline.dart';
 import 'package:screenshot/screenshot.dart';
-
-import '../../../data/models/dto_test/dto_test.dart';
 import '../../widgets/screen_shoot_invoice_widgets/ssi_widget_cachier.dart';
 import '../../widgets/screen_shoot_invoice_widgets/ssi_widget_prices.dart';
 import '../../widgets/screen_shoot_invoice_widgets/ssi_widget_products.dart';
@@ -15,7 +14,7 @@ class ScrenShotInvoice extends StatelessWidget {
       required this.dto,
       required this.isImin});
   final ScreenshotController screenshotController;
-  final DtoTest dto;
+  final DtoOffline dto;
   final bool isImin;
 
   @override

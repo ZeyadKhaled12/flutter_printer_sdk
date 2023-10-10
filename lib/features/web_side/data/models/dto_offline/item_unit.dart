@@ -1,14 +1,14 @@
-import 'package:collection/collection.dart';
+import 'package:equatable/equatable.dart';
 
-class ItemUnit {
-  int? id;
-  String? nameAr;
-  String? nameEn;
-  bool? isDelete;
-  bool? isSell;
-  bool? isBuy;
+class ItemUnit extends Equatable {
+  final int? id;
+  final String? nameAr;
+  final String? nameEn;
+  final bool? isDelete;
+  final bool? isSell;
+  final bool? isBuy;
 
-  ItemUnit({
+  const ItemUnit({
     this.id,
     this.nameAr,
     this.nameEn,
@@ -36,19 +36,14 @@ class ItemUnit {
       };
 
   @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    if (other is! ItemUnit) return false;
-    final mapEquals = const DeepCollectionEquality().equals;
-    return mapEquals(other.toJson(), toJson());
+  List<Object?> get props {
+    return [
+      id,
+      nameAr,
+      nameEn,
+      isDelete,
+      isSell,
+      isBuy,
+    ];
   }
-
-  @override
-  int get hashCode =>
-      id.hashCode ^
-      nameAr.hashCode ^
-      nameEn.hashCode ^
-      isDelete.hashCode ^
-      isSell.hashCode ^
-      isBuy.hashCode;
 }

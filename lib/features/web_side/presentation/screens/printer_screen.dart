@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_printer_sdk/core/utils/enums.dart';
+import 'package:flutter_printer_sdk/features/web_side/data/models/dto_offline/dto_offline.dart';
 import 'package:screenshot/screenshot.dart';
 
 import '../../../../core/utils/general_functions/using_printer.dart';
-import '../../data/models/dto_test/dto_test.dart';
 import 'screen_shoots_screens/screen_shoot_invoice.dart';
 import 'screen_shoots_screens/screen_shoot_oder.dart';
 
@@ -14,7 +14,7 @@ class PrinterScreen extends StatefulWidget {
       required this.dto,
       required this.isImin,
       required this.printingState});
-  final DtoTest dto;
+  final DtoOffline dto;
   final bool isImin;
   final PrintingState printingState;
 
