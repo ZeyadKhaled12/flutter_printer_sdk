@@ -8,17 +8,20 @@ class SSOWidgetTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Table(
-      border: TableBorder.all(color: Colors.black, width: 0.4),
+      border: TableBorder.symmetric(
+          inside: const BorderSide(color: Colors.black, width: 0.4)),
       columnWidths: const {
         0: FractionColumnWidth(0.4),
         1: FractionColumnWidth(0.6),
       },
       children: List.generate(
-          dto.billDetails!.length,
-          (index) => buildRow([
-                '${dto.billDetails![index].qty}',
-                '${dto.billDetails![index].item!.nameAr} - ${dto.billDetails![index].itemUnit!.nameAr}\n${dto.billDetails![index].parentCategoryAr}\n${dto.billDetails![index].note}'
-              ])),
+          dto.billDetails!.length + 1,
+          (index) => index == 0
+              ? buildRow(['الكمية', 'الصنف'])
+              : buildRow([
+                  '${dto.billDetails![index - 1].qty}',
+                  '${dto.billDetails![index - 1].item!.nameAr} - ${dto.billDetails![index - 1].itemUnit!.nameAr}\n${dto.billDetails![index - 1].parentCategoryAr}\n${dto.billDetails![index - 1].note}'
+                ])),
     );
   }
 }
@@ -29,6 +32,6 @@ TableRow buildRow(List<String> cells) {
           .map((e) => Padding(
               padding: EdgeInsets.zero,
               child:
-                  Center(child: Text(e, style: const TextStyle(fontSize: 12)))))
+                  Center(child: Text(e, style: const TextStyle(fontSize: 6)))))
           .toList());
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../data/models/dto_offline/dto_offline.dart';
 
-
 class SSIWidgetPrices extends StatelessWidget {
   const SSIWidgetPrices({super.key, required this.dto, required this.isImin});
   final DtoOffline dto;
@@ -20,9 +19,9 @@ class SSIWidgetPrices extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('${dto.discountTotal}\n${dto.serviceTotal}',
-                  style: const TextStyle(fontSize: 12, color: Colors.black)),
+                  style: const TextStyle(fontSize: 8, color: Colors.black)),
               Text('خصم\n${dto.serviceValue}%',
-                  style: const TextStyle(fontSize: 12, color: Colors.black)),
+                  style: const TextStyle(fontSize: 8, color: Colors.black)),
             ],
           ),
           Container(
@@ -34,23 +33,25 @@ class SSIWidgetPrices extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                     color: Colors.black,
-                    fontSize: 15,
+                    fontSize: 10,
                     fontWeight: FontWeight.bold),
               ),
-              const Text(
-                'السعر شامل ق.م',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
+              if (double.parse(val) != 0)
+                const Text(
+                  'السعر شامل ق.م',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 10,
+                  ),
                 ),
-              ),
-              Text(
-                val,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
-                ),
-              )
+              if (double.parse(val) != 0)
+                Text(
+                  val,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 10,
+                  ),
+                )
             ]),
           )
         ],

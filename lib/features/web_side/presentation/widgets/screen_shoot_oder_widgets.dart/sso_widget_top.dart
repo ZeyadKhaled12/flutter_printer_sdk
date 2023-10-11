@@ -21,7 +21,7 @@ class SSOWidgetTop extends StatelessWidget {
             value1: '${dto.code}',
             value2: 'admin',
             bigValue: dto.billPlace!.nameAr!),
-        const Padding(padding: EdgeInsets.only(bottom: 15)),
+        const Padding(padding: EdgeInsets.only(bottom: 6)),
         body(
             title1: 'تاريخ',
             title2: 'الوقت',
@@ -49,39 +49,18 @@ Widget body({
       children: [
         Text(
           bigValue,
-          style: const TextStyle(color: Colors.black, fontSize: 12),
+          style: const TextStyle(
+              color: Colors.black, fontSize: 8, fontWeight: FontWeight.bold),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        Column(
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  value1,
-                  style: const TextStyle(color: Colors.black, fontSize: 12),
-                ),
-                Text(
-                  value2,
-                  style: const TextStyle(color: Colors.black, fontSize: 12),
-                ),
-              ],
+            Text(
+              '$value1:$title1',
+              style: const TextStyle(color: Colors.black, fontSize: 8),
             ),
-            const Padding(padding: EdgeInsets.only(right: 4)),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  title1,
-                  style: const TextStyle(color: Colors.black, fontSize: 12),
-                ),
-                Text(
-                  title2,
-                  style: const TextStyle(color: Colors.black, fontSize: 12),
-                ),
-              ],
+            Text(
+              '$value2:$title2',
+              style: const TextStyle(color: Colors.black, fontSize: 8),
             ),
           ],
         )

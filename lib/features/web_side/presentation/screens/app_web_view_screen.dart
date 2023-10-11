@@ -4,13 +4,8 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_printer_sdk/core/utils/enums.dart';
-import 'package:flutter_printer_sdk/features/web_side/data/models/dto_offline/dto_offline.dart';
-import 'package:flutter_printer_sdk/features/web_side/presentation/screens/printer_screen_online.dart';
 import 'package:native_pdf_renderer/native_pdf_renderer.dart';
-import '../../../../core/utils/general_functions/convert_dto_to_images.dart';
-import '../../../../core/utils/general_functions/using_printer.dart';
-import '../../data/models/dto_online.dart/dto_online.dart';
-import '../../data/models/print_object.dart';
+import '../../data/models/dto_offline/dto_offline.dart';
 import 'printer_screen.dart';
 
 class AppWebViewScreen extends StatelessWidget {
@@ -30,16 +25,14 @@ class AppWebViewScreen extends StatelessWidget {
           controller.addJavaScriptHandler(
               handlerName: 'print',
               callback: (args) async {
+                log(jsonEncode(args[0]));
                 PrintingState printingState = PrintingState.end;
                 DtoOffline dto = DtoOffline.fromJson(args[0]);
                 if (!dto.isPending! && dto.billDetails![0].isNew!) {
-                  print('ENDING');
                   printingState = PrintingState.end;
                 } else if (!dto.isPending! && !dto.billDetails![0].isNew!) {
-                  print('PRINTING');
                   printingState = PrintingState.print;
                 } else if (dto.isPending! && dto.billDetails![0].isNew!) {
-                  print('ORDER');
                   printingState = PrintingState.order;
                 }
                 await Navigator.push(

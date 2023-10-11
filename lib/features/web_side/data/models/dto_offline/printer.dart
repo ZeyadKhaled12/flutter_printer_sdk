@@ -1,5 +1,10 @@
 import 'package:equatable/equatable.dart';
 
+import 'print_paper_size.dart';
+import 'printer_brand.dart';
+import 'printer_connection_type.dart';
+import 'printer_model.dart';
+
 class Printer extends Equatable {
   final int? id;
   final String? displayNameAr;
@@ -7,16 +12,16 @@ class Printer extends Equatable {
   final dynamic printerName;
   final int? countCopies;
   final bool? isDelete;
-  final dynamic printerConnectionTypeId;
-  final dynamic printerConnectionType;
-  final dynamic printerModelId;
-  final dynamic printerModel;
-  final dynamic printerBrandId;
-  final dynamic printerBrand;
-  final dynamic printPaperSizeId;
-  final dynamic printPaperSize;
-  final dynamic ipAddress;
-  final dynamic port;
+  final int? printerConnectionTypeId;
+  final PrinterConnectionType? printerConnectionType;
+  final int? printerModelId;
+  final PrinterModel? printerModel;
+  final int? printerBrandId;
+  final PrinterBrand? printerBrand;
+  final int? printPaperSizeId;
+  final PrintPaperSize? printPaperSize;
+  final String? ipAddress;
+  final String? port;
 
   const Printer({
     this.id,
@@ -44,16 +49,28 @@ class Printer extends Equatable {
         printerName: json['printerName'] as dynamic,
         countCopies: json['countCopies'] as int?,
         isDelete: json['isDelete'] as bool?,
-        printerConnectionTypeId: json['printerConnectionTypeId'] as dynamic,
-        printerConnectionType: json['printerConnectionType'] as dynamic,
-        printerModelId: json['printerModelId'] as dynamic,
-        printerModel: json['printerModel'] as dynamic,
-        printerBrandId: json['printerBrandId'] as dynamic,
-        printerBrand: json['printerBrand'] as dynamic,
-        printPaperSizeId: json['printPaperSizeId'] as dynamic,
-        printPaperSize: json['printPaperSize'] as dynamic,
-        ipAddress: json['ipAddress'] as dynamic,
-        port: json['port'] as dynamic,
+        printerConnectionTypeId: json['printerConnectionTypeId'] as int?,
+        printerConnectionType: json['printerConnectionType'] == null
+            ? null
+            : PrinterConnectionType.fromJson(
+                json['printerConnectionType'] as Map<String, dynamic>),
+        printerModelId: json['printerModelId'] as int?,
+        printerModel: json['printerModel'] == null
+            ? null
+            : PrinterModel.fromJson(
+                json['printerModel'] as Map<String, dynamic>),
+        printerBrandId: json['printerBrandId'] as int?,
+        printerBrand: json['printerBrand'] == null
+            ? null
+            : PrinterBrand.fromJson(
+                json['printerBrand'] as Map<String, dynamic>),
+        printPaperSizeId: json['printPaperSizeId'] as int?,
+        printPaperSize: json['printPaperSize'] == null
+            ? null
+            : PrintPaperSize.fromJson(
+                json['printPaperSize'] as Map<String, dynamic>),
+        ipAddress: json['ipAddress'] as String?,
+        port: json['port'] as String?,
       );
 
   Map<String, dynamic> toJson() => {
@@ -64,13 +81,13 @@ class Printer extends Equatable {
         'countCopies': countCopies,
         'isDelete': isDelete,
         'printerConnectionTypeId': printerConnectionTypeId,
-        'printerConnectionType': printerConnectionType,
+        'printerConnectionType': printerConnectionType?.toJson(),
         'printerModelId': printerModelId,
-        'printerModel': printerModel,
+        'printerModel': printerModel?.toJson(),
         'printerBrandId': printerBrandId,
-        'printerBrand': printerBrand,
+        'printerBrand': printerBrand?.toJson(),
         'printPaperSizeId': printPaperSizeId,
-        'printPaperSize': printPaperSize,
+        'printPaperSize': printPaperSize?.toJson(),
         'ipAddress': ipAddress,
         'port': port,
       };

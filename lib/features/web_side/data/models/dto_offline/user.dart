@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 import 'branch.dart';
+import 'printer.dart';
 
 class User extends Equatable {
   final int? id;
@@ -12,8 +13,8 @@ class User extends Equatable {
   final bool? isOpenShift;
   final int? branchId;
   final Branch? branch;
-  final dynamic printerId;
-  final dynamic printer;
+  final int? printerId;
+  final Printer? printer;
   final int? boxMoneyId;
 
   const User({
@@ -43,8 +44,10 @@ class User extends Equatable {
         branch: json['branch'] == null
             ? null
             : Branch.fromJson(json['branch'] as Map<String, dynamic>),
-        printerId: json['printerId'] as dynamic,
-        printer: json['printer'] as dynamic,
+        printerId: json['printerId'] as int?,
+        printer: json['printer'] == null
+            ? null
+            : Printer.fromJson(json['printer'] as Map<String, dynamic>),
         boxMoneyId: json['boxMoneyId'] as int?,
       );
 
@@ -59,7 +62,7 @@ class User extends Equatable {
         'branchId': branchId,
         'branch': branch?.toJson(),
         'printerId': printerId,
-        'printer': printer,
+        'printer': printer?.toJson(),
         'boxMoneyId': boxMoneyId,
       };
 

@@ -12,7 +12,8 @@ class SSIWidgetCachier extends StatelessWidget {
       width: double.infinity,
       child: Column(
         children: [
-          row(' :رقم الفاتورة ' '${dto.code}',
+          row(
+              '${dto.code}:رقم الفاتورة', //' رقم الفاتورة :' '${dto.code}',
               GConverter(stringConvert: dto.date!).convertFromDateTime().date),
           row('${dto.user!.fullName}:كاشير',
               GConverter(stringConvert: dto.date!).convertFromDateTime().time),
@@ -28,11 +29,11 @@ Widget row(String title, String sub) {
     children: [
       Text(
         sub,
-        style: const TextStyle(color: Colors.black, fontSize: 10),
+        style: const TextStyle(color: Colors.black, fontSize: 8),
       ),
       Text(
         title,
-        style: const TextStyle(color: Colors.black, fontSize: 10),
+        style: const TextStyle(color: Colors.black, fontSize: 8),
       ),
     ],
   );

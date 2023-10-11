@@ -24,18 +24,22 @@ class ScrenShotInvoice extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(children: [
           SSIWidgetTitle(dto: dto),
-          const Divider(color: Colors.black, thickness: 1, height: 10),
+          const Divider(
+              color: Color.fromRGBO(0, 0, 0, 1), thickness: 1, height: 10),
           SSIWidgetCachier(dto: dto),
-          const Divider(color: Colors.black, thickness: 4, height: 20),
+          const Divider(color: Colors.black, thickness: 2, height: 10),
           SSIWidgetProducts(dto: dto),
-          const Divider(color: Colors.black, thickness: 1),
+          const Divider(color: Colors.black, thickness: 1, height: 0),
           SSIWidgetPrices(dto: dto, isImin: isImin),
-          const Divider(color: Colors.black, thickness: 1.5),
+          if (dto.qrCode != null)
+            const Divider(color: Colors.black, thickness: 1.5),
           if (dto.qrCode != null) SSIWidgetQRCode(dto: dto),
-          const Divider(color: Colors.black, thickness: 5),
-          const Center(
-              child: Text('Powered By Easacc.com',
-                  style: TextStyle(color: Colors.black, fontSize: 11)))
+          const Padding(
+              padding: EdgeInsets.only(top: 4, bottom: 1),
+              child: Divider(color: Colors.black, thickness: 2, height: 0)),
+          const Text('Powered By Easacc.com',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.black, fontSize: 8))
         ]),
       ),
     );

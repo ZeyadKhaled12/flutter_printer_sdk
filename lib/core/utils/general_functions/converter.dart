@@ -12,7 +12,7 @@ class GConverter {
 
   DateConverter convertFromDateTime() {
     List date = stringConvert.split('2023');
-    date[0] = '${date[0]}/2023';
+    date[0] = '${date[0]}2023';
     return DateConverter(date: date[0], time: date[1]);
   }
 }

@@ -14,30 +14,31 @@ class SSIWidgetTitle extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text('فتورة ضريبة مبسطة',
-                style: TextStyle(color: Colors.black, fontSize: 12)),
+            // const Text('فتورة ضريبة مبسطة',
+            //     style: TextStyle(color: Colors.black, fontSize: 12)),
             Text('${dto.orderNo}',
                 style: const TextStyle(
                     color: Colors.black,
-                    fontSize: 16,
+                    fontSize: 11,
                     fontWeight: FontWeight.bold)),
             const Padding(padding: EdgeInsets.only(bottom: 2.5)),
             Text('${dto.companyInfo!.nameAr}',
                 style: const TextStyle(
                     color: Colors.black,
-                    fontSize: 14,
+                    fontSize: 11,
                     fontWeight: FontWeight.bold)),
-            const Padding(padding: EdgeInsets.only(bottom: 2.5)),
-            Text(dto.companyInfo!.address!,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                )),
-            const Padding(padding: EdgeInsets.only(bottom: 2.5)),
+            // const Padding(padding: EdgeInsets.only(bottom: 2.5)),
+            if (dto.companyInfo!.address!.isNotEmpty)
+              Text(dto.companyInfo!.address!,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 10,
+                  )),
+            // const Padding(padding: EdgeInsets.only(bottom: 2.5)),
             Text(
               'الرقم الضريبي' ' ${dto.companyInfo!.taxNumber} ',
               textAlign: TextAlign.end,
-              style: const TextStyle(color: Colors.black, fontSize: 12),
+              style: const TextStyle(color: Colors.black, fontSize: 8),
             ),
           ],
         ));

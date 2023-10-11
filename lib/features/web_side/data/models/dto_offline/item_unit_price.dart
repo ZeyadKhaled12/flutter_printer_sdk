@@ -4,7 +4,7 @@ class ItemUnitPrice extends Equatable {
   final int? id;
   final int? itemUnitId;
   final int? sellPrice;
-  final double? buyPrice;
+  final int? buyPrice;
   final bool? isDefullt;
   final bool? isDelete;
   final String? itemUnitNameAr;
@@ -29,7 +29,7 @@ class ItemUnitPrice extends Equatable {
         id: json['id'] as int?,
         itemUnitId: json['itemUnitId'] as int?,
         sellPrice: json['sellPrice'] as int?,
-        buyPrice: (json['buyPrice'] as num?)?.toDouble(),
+        buyPrice: json['buyPrice'] as int?,
         isDefullt: json['isDefullt'] as bool?,
         isDelete: json['isDelete'] as bool?,
         itemUnitNameAr: json['itemUnitNameAR'] as String?,

@@ -35,14 +35,8 @@ class _PrinterScreenState extends State<PrinterScreen> {
         await screenshotControllerOrder
             .capture()
             .then((capturedImageOrder) async {
-          UsingPrinter usingPrinter = UsingPrinter(
-              listImages: listImage(widget.printingState, capturedImageInvoice,
-                  capturedImageOrder));
-          if (widget.isImin) {
-            await usingPrinter.printingImin();
-          } else {
-            await usingPrinter.printingEscPos();
-          }
+          printFun(
+              widget.printingState, capturedImageInvoice, capturedImageOrder);
         });
       });
     });
@@ -50,16 +44,26 @@ class _PrinterScreenState extends State<PrinterScreen> {
     super.initState();
   }
 
-  List<Uint8List>? listImage(PrintingState printingState,
-      Uint8List? capturedImageInvoice, Uint8List? capturedImageOrder) {
+  Future<void> printFun(PrintingState printingState,
+      Uint8List? capturedImageInvoice, Uint8List? capturedImageOrder) async {
     switch (printingState) {
       case PrintingState.order:
-        return [capturedImageInvoice!, capturedImageOrder!];
+        usingPrintFun(capturedImageOrder!);
       case PrintingState.print:
-        return [capturedImageInvoice!];
+        usingPrintFun(capturedImageInvoice!);
       case PrintingState.end:
-        return [capturedImageOrder!];
+        usingPrintFun(capturedImageInvoice!);
+        usingPrintFun(capturedImageOrder!);
     }
+  }
+
+  Future<void> usingPrintFun(Uint8List image) async {
+    await UsingPrinter(
+            image: image,
+            printingBrandState: widget.isImin
+                ? PrintingBrandState.imin
+                : PrintingBrandState.escpos)
+        .call();
   }
 
   @override

@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:flutter_printer_sdk/features/web_side/data/models/print_object.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 

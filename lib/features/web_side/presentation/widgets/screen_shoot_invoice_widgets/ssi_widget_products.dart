@@ -34,6 +34,6 @@ TableRow buildRow(List<String> cells) {
           .map((e) => Padding(
               padding: EdgeInsets.zero,
               child:
-                  Center(child: Text(e, style: const TextStyle(fontSize: 12)))))
+                  Center(child: Text(e, style: const TextStyle(fontSize: 6)))))
           .toList());
 }

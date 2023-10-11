@@ -32,10 +32,10 @@ class DtoOffline extends Equatable {
   final String? applicationValue;
   final int? applicationTotal;
   final String? serviceValue;
-  final int? serviceTotal;
+  final double? serviceTotal;
   final int? deliveryFee;
-  final int? netTotal;
-  final int? paiedCash;
+  final double? netTotal;
+  final double? paiedCash;
   final int? paiedVisa;
   final dynamic lastPaiedCash;
   final dynamic lastPaiedVisa;
@@ -82,7 +82,7 @@ class DtoOffline extends Equatable {
   final int? boxMoneyId;
   final String? uid;
   final dynamic printerName;
-  final dynamic countCopies;
+  final int? countCopies;
   final dynamic receiptType;
   final String? lang;
   final String? logo;
@@ -211,10 +211,10 @@ class DtoOffline extends Equatable {
         applicationValue: json['applicationValue'] as String?,
         applicationTotal: json['applicationTotal'] as int?,
         serviceValue: json['serviceValue'] as String?,
-        serviceTotal: json['serviceTotal'] as int?,
+        serviceTotal: (json['serviceTotal'] as num?)?.toDouble(),
         deliveryFee: json['deliveryFee'] as int?,
-        netTotal: json['netTotal'] as int?,
-        paiedCash: json['paiedCash'] as int?,
+        netTotal: (json['netTotal'] as num?)?.toDouble(),
+        paiedCash: (json['paiedCash'] as num?)?.toDouble(),
         paiedVisa: json['paiedVisa'] as int?,
         lastPaiedCash: json['lastPaiedCash'] as dynamic,
         lastPaiedVisa: json['lastPaiedVisa'] as dynamic,
@@ -273,7 +273,7 @@ class DtoOffline extends Equatable {
         boxMoneyId: json['boxMoneyId'] as int?,
         uid: json['uid'] as String?,
         printerName: json['printerName'] as dynamic,
-        countCopies: json['countCopies'] as dynamic,
+        countCopies: json['countCopies'] as int?,
         receiptType: json['receiptType'] as dynamic,
         lang: json['lang'] as String?,
         logo: json['logo'] as String?,

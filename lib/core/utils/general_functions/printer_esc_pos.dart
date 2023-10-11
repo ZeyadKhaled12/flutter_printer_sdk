@@ -12,6 +12,7 @@ class PrinterEscPos extends BasePrinterPdf {
       List<Uint8List>? images}) async {
     if (images != null) {
       print('GET IN 1');
+      print(images.length);
       final Image? image1 = decodeImage(images[0]);
       final Image? image2 = decodeImage(images[1]);
       printer.image(image1!, align: PosAlign.center);

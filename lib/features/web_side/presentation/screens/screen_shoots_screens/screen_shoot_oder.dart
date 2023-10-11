@@ -18,7 +18,7 @@ class ScreenShootOrder extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(children: [
           SSOWidgetTop(dto: dto),
-          const Padding(padding: EdgeInsets.only(bottom: 40)),
+          const Padding(padding: EdgeInsets.only(bottom: 5)),
           SSOWidgetTable(dto: dto)
         ]),
       ),
