@@ -19,7 +19,11 @@ class ScreenShootOrder extends StatelessWidget {
         child: Column(children: [
           SSOWidgetTop(dto: dto),
           const Padding(padding: EdgeInsets.only(bottom: 5)),
-          SSOWidgetTable(dto: dto)
+          SSOWidgetTable(dto: dto),
+          const Divider(color: Colors.black, thickness: 2, height: 1),
+          const Text('Powered By Easacc.com',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.black, fontSize: 8))
         ]),
       ),
     );

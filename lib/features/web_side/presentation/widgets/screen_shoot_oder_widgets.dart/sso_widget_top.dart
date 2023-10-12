@@ -15,6 +15,11 @@ class SSOWidgetTop extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        Text('${dto.companyInfo!.nameAr}',
+            style: const TextStyle(
+                color: Colors.black,
+                fontSize: 10,
+                fontWeight: FontWeight.bold)),
         body(
             title1: 'رقم الفاتورة',
             title2: 'المستخدم',
@@ -26,7 +31,7 @@ class SSOWidgetTop extends StatelessWidget {
             title1: 'تاريخ',
             title2: 'الوقت',
             value1: dateConverter.date,
-            value2: dateConverter.date,
+            value2: dateConverter.time,
             bigValue: '${dto.orderNo}'),
       ],
     );
@@ -50,7 +55,7 @@ Widget body({
         Text(
           bigValue,
           style: const TextStyle(
-              color: Colors.black, fontSize: 8, fontWeight: FontWeight.bold),
+              color: Colors.black, fontSize: 10, fontWeight: FontWeight.bold),
         ),
         Column(
           children: [

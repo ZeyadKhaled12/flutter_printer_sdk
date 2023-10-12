@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../../data/models/dto_offline/dto_offline.dart';
 
@@ -16,6 +17,12 @@ class SSIWidgetTitle extends StatelessWidget {
           children: [
             // const Text('فتورة ضريبة مبسطة',
             //     style: TextStyle(color: Colors.black, fontSize: 12)),
+            Image(
+              image: NetworkImage(dto.companyInfo!.logo!),
+              height: 15,
+              color: Colors.black,
+              colorBlendMode: BlendMode.saturation,
+            ),
             Text('${dto.orderNo}',
                 style: const TextStyle(
                     color: Colors.black,

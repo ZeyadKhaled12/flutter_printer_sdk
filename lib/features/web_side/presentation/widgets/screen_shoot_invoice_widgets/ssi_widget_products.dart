@@ -22,7 +22,7 @@ class SSIWidgetProducts extends StatelessWidget {
           (index) => buildRow([
                 '${dto.billDetails![index].netTotal}',
                 '${dto.billDetails![index].qty}',
-                '${dto.billDetails![index].item!.nameAr} - ${dto.billDetails![index].itemUnit!.nameAr}\n${dto.billDetails![index].parentCategoryAr}\n${dto.billDetails![index].note}'
+                '${dto.billDetails![index].item!.nameAr}-${dto.billDetails![index].itemUnit!.nameAr}-${dto.billDetails![index].parentCategoryAr}-${dto.billDetails![index].note}'
               ])),
     );
   }
@@ -33,7 +33,11 @@ TableRow buildRow(List<String> cells) {
       children: cells
           .map((e) => Padding(
               padding: EdgeInsets.zero,
-              child:
-                  Center(child: Text(e, style: const TextStyle(fontSize: 6)))))
+              child: Center(
+                  child: Text(
+                e,
+                style: const TextStyle(fontSize: 6.9),
+                textAlign: TextAlign.center,
+              ))))
           .toList());
 }

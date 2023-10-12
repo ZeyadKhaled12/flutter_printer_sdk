@@ -25,7 +25,6 @@ class AppWebViewScreen extends StatelessWidget {
           controller.addJavaScriptHandler(
               handlerName: 'print',
               callback: (args) async {
-                log(jsonEncode(args[0]));
                 PrintingState printingState = PrintingState.end;
                 DtoOffline dto = DtoOffline.fromJson(args[0]);
                 if (!dto.isPending! && dto.billDetails![0].isNew!) {
@@ -35,6 +34,7 @@ class AppWebViewScreen extends StatelessWidget {
                 } else if (dto.isPending! && dto.billDetails![0].isNew!) {
                   printingState = PrintingState.order;
                 }
+                print(dto.companyInfo!.logo);
                 await Navigator.push(
                     context,
                     MaterialPageRoute(

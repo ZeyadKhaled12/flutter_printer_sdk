@@ -20,7 +20,7 @@ class SSOWidgetTable extends StatelessWidget {
               ? buildRow(['الكمية', 'الصنف'])
               : buildRow([
                   '${dto.billDetails![index - 1].qty}',
-                  '${dto.billDetails![index - 1].item!.nameAr} - ${dto.billDetails![index - 1].itemUnit!.nameAr}\n${dto.billDetails![index - 1].parentCategoryAr}\n${dto.billDetails![index - 1].note}'
+                  '${dto.billDetails![index - 1].item!.nameAr} - ${dto.billDetails![index - 1].itemUnit!.nameAr}-${dto.billDetails![index - 1].parentCategoryAr}-${dto.billDetails![index - 1].note}'
                 ])),
     );
   }
@@ -31,7 +31,9 @@ TableRow buildRow(List<String> cells) {
       children: cells
           .map((e) => Padding(
               padding: EdgeInsets.zero,
-              child:
-                  Center(child: Text(e, style: const TextStyle(fontSize: 6)))))
+              child: Center(
+                  child: Text(e,
+                      style: const TextStyle(fontSize: 8),
+                      textAlign: TextAlign.center))))
           .toList());
 }
