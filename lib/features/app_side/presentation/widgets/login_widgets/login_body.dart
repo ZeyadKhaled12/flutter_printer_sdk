@@ -20,7 +20,8 @@ class LoginBody extends StatefulWidget {
 }
 
 class _LoginBodyState extends State<LoginBody> {
-  TextEditingController textEditingControllerName = TextEditingController();
+  TextEditingController textEditingControllerName =
+      TextEditingController(text: AppConstance.url);
   TextEditingController textEditingControllerPassword = TextEditingController();
 
   @override
@@ -42,11 +43,11 @@ class _LoginBodyState extends State<LoginBody> {
                 textEditingController: textEditingControllerName,
                 isObscureText: false,
               ),
-              LoginWidgetTextField(
-                hintText: 'كلمة السر',
-                textEditingController: textEditingControllerPassword,
-                isObscureText: true,
-              ),
+              // LoginWidgetTextField(
+              //   hintText: 'كلمة السر',
+              //   textEditingController: textEditingControllerPassword,
+              //   isObscureText: true,
+              // ),
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.only(top: 5, bottom: 5),
@@ -56,16 +57,21 @@ class _LoginBodyState extends State<LoginBody> {
                     color: primaryColor),
                 child: TextButton(
                     onPressed: () {
-                      context.read<AppSideBloc>().add(LoginEvent(
-                          loginParameters: LoginParameters(
-                              login: Login(
-                                  message: '',
-                                  emailOrPhone: textEditingControllerName.text,
-                                  password:
-                                      textEditingControllerPassword.text))));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AppWebViewScreen(
+                                  url: textEditingControllerName.text)));
+                      // context.read<AppSideBloc>().add(LoginEvent(
+                      //     loginParameters: LoginParameters(
+                      //         login: Login(
+                      //             message: '',
+                      //             emailOrPhone: textEditingControllerName.text,
+                      //             password:
+                      //                 textEditingControllerPassword.text))));
                     },
                     child: Text(
-                      'تسجيل الدخول',
+                      'Next',
                       style: GoogleFonts.notoSansGrantha(
                           color: Colors.white, fontSize: 20),
                     )),

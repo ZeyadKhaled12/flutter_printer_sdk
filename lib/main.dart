@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_printer_sdk/features/app_side/presentation/screens/login_screen.dart';
 
 import 'core/services/services_locator.dart';
 import 'core/utils/app_constance.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const AppWebViewScreen(url: AppConstance.url),
+      home: const LoginScreen(),
     );
   }
 }

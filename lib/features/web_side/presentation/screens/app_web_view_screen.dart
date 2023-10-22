@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_printer_sdk/core/utils/enums.dart';
+import 'package:flutter_printer_sdk/core/utils/general_functions/convert_brand_to_state.dart';
 import 'package:native_pdf_renderer/native_pdf_renderer.dart';
 import '../../data/models/dto_offline/dto_offline.dart';
 import 'printer_screen.dart';
@@ -34,15 +35,17 @@ class AppWebViewScreen extends StatelessWidget {
                 } else if (dto.isPending! && dto.billDetails![0].isNew!) {
                   printingState = PrintingState.order;
                 }
-                print(dto.companyInfo!.logo);
                 await Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => PrinterScreen(
-                        dto: dto,
-                        printingState: printingState,
-                        isImin: false,
-                      ),
+                          dto: dto,
+                          printingState: printingState,
+                          isImin: ConvertBrandToState(
+                                      brand: dto.billDetails![0].item!.printer!
+                                          .printerBrand!.name!)
+                                  .getBrandState() ==
+                              PrintingBrandState.imin),
                     ));
               });
         },

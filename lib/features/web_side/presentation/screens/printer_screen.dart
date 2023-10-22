@@ -12,8 +12,8 @@ class PrinterScreen extends StatefulWidget {
   const PrinterScreen(
       {super.key,
       required this.dto,
-      required this.isImin,
-      required this.printingState});
+      required this.printingState,
+      required this.isImin});
   final DtoOffline dto;
   final bool isImin;
   final PrintingState printingState;
@@ -48,22 +48,31 @@ class _PrinterScreenState extends State<PrinterScreen> {
       Uint8List? capturedImageInvoice, Uint8List? capturedImageOrder) async {
     switch (printingState) {
       case PrintingState.order:
-        usingPrintFun(capturedImageOrder!);
+        usingPrintFun(capturedImageOrder!,
+            ipAddress: widget.dto.billDetails![0].item!.printer!.ipAddress!,
+            port: int.parse(widget.dto.billDetails![0].item!.printer!.port!));
       case PrintingState.print:
-        usingPrintFun(capturedImageInvoice!);
+        usingPrintFun(capturedImageInvoice!,
+            ipAddress: widget.dto.billDetails![0].item!.printer!.ipAddress!,
+            port: int.parse(widget.dto.billDetails![0].item!.printer!.port!));
       case PrintingState.end:
-        usingPrintFun(capturedImageInvoice!);
-        usingPrintFun(capturedImageOrder!);
+        usingPrintFun(capturedImageInvoice!,
+            ipAddress: widget.dto.billDetails![0].item!.printer!.ipAddress!,
+            port: int.parse(widget.dto.billDetails![0].item!.printer!.port!));
+        usingPrintFun(capturedImageOrder!,
+            ipAddress: widget.dto.billDetails![0].item!.printer!.ipAddress!,
+            port: int.parse(widget.dto.billDetails![0].item!.printer!.port!));
     }
   }
 
-  Future<void> usingPrintFun(Uint8List image) async {
+  Future<void> usingPrintFun(Uint8List image,
+      {required String ipAddress, required int port}) async {
     await UsingPrinter(
             image: image,
             printingBrandState: widget.isImin
                 ? PrintingBrandState.imin
                 : PrintingBrandState.escpos)
-        .call();
+        .call(ipAddress: ipAddress, port: port);
   }
 
   @override

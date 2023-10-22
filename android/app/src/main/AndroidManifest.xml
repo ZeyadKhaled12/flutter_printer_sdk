@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.flutter_printer_sdk">
+    package="com.easacc.pos_mamagment">
 
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.CAMERA" />
@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
    <application
-        android:label="flutter_printer_sdk"
+        android:label="EasaccPosManagment"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

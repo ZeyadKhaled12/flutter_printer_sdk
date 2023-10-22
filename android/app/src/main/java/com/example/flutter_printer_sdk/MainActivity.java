@@ -1,4 +1,4 @@
-package com.example.flutter_printer_sdk;
+package com.easacc.pos_mamagment;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

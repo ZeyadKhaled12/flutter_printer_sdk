@@ -19,9 +19,7 @@ class SSIWidgetTitle extends StatelessWidget {
             //     style: TextStyle(color: Colors.black, fontSize: 12)),
             Image(
               image: NetworkImage(dto.companyInfo!.logo!),
-              height: 15,
-              color: Colors.black,
-              colorBlendMode: BlendMode.saturation,
+              height: 25,
             ),
             Text('${dto.orderNo}',
                 style: const TextStyle(
