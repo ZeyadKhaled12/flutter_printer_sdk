@@ -56,11 +56,11 @@ _onTap(BuildContext context) async {
   );
   webview
     ..setBrightness(Brightness.dark)
-    ..launch(AppConstance.url)
+    ..launch(AppConstance.windowsUrl)
     ..registerJavaScriptMessageHandler("myMessage", (name, body) {});
 }
 
-Future<String> _getWebViewPath() async {
+Future<String> getWebViewPath() async {
   final document = await getApplicationDocumentsDirectory();
   return p.join(
     document.path,

@@ -4,6 +4,7 @@ import 'package:flutter_printer_sdk/features/app_side/presentation/screens/login
 import 'core/services/services_locator.dart';
 import 'core/utils/app_constance.dart';
 import 'features/web_side/presentation/screens/app_web_view_screen.dart';
+import 'features/web_side/presentation/screens/windows_web_view_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginScreen(),
+      home: const WindowsWebViewScreen(),
     );
   }
 }
